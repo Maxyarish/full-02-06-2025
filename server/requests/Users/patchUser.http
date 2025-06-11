@@ -1,0 +1,7 @@
+PATCH http://localhost:3000/users/684990f1deabdb43c2135ac0 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDk5MGYxZGVhYmRiNDNjMjEzNWFjMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0OTY1MjMyOCwiZXhwIjoxNzUwMjU3MTI4fQ.5S1NJAWTBOHLkDwG_oZtOrRNrRi01YVorzXwBW5jQpI
+
+{
+     "email": "admin01@example.com"
+}
