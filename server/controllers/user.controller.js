@@ -80,7 +80,7 @@ module.exports.updateUser = async (req, res, next) => {
     res.status(200).send({ data: user });
   } catch (error) {
     if (error.code===11000) {
-      return next(createError(404,'email is alreade exists'))
+      return next(createError(404,'email is already exists'))
     }
     next(error);
   }
