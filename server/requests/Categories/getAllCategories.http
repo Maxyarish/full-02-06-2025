@@ -1,2 +1,1 @@
 GET http://localhost:3000/categories HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDcwNDAxM2Q0ZjYxNDVhM2ZiYjQ5ZiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0OTQ4NDU3NCwiZXhwIjoxNzUwMDg5Mzc0fQ.zY-dfsP4jWJTSjSVl3JjP17ST8Ai1eUgO5rUFEccTdI

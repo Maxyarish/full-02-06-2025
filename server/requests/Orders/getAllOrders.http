@@ -1,2 +1,2 @@
-GET http://localhost:3000/users HTTP/1.1
+GET http://localhost:3000/orders HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDk5MGYxZGVhYmRiNDNjMjEzNWFjMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjI0NDE0MCwiZXhwIjoxNzUyODQ4OTQwfQ.eMC8pVyTkhROFfOaGhhv0bwBBfCuXTcEUNPVU0yyXN0

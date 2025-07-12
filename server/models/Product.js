@@ -46,7 +46,7 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-productSchema.index({ title: 1, category:1},{unique:true});
+productSchema.index({ title: 1, category: 1 }, { unique: true });
 
 const Product = mongoose.model("Product", productSchema);
 

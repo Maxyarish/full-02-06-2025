@@ -3,8 +3,8 @@ const multer = require("multer");
 const CONSTANTS = require("../constants");
 const storage = multer.diskStorage({
   destination: CONSTANTS.UPLOAD_FOLDER,
-  filename: (req, res, cb) => {
-    cb(null, Date().now() + "-" + file.originalname);
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
   },
 });
 

@@ -1,0 +1,11 @@
+PATCH http://localhost:3000/products/68502fd151adc874de3070c2 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDk5MGYxZGVhYmRiNDNjMjEzNWFjMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MDI1ODcwMCwiZXhwIjoxNzUwODYzNTAwfQ.WadSU786qAs6bK_QDd7thz129-oYu91ZqYraK3ouzmA
+
+{
+    "title":"Bread",
+    "description":"Bread is a staple food prepared from a dough of flour and water, usually",
+    "price":3.99,
+    "stockQty":34,
+    "category":"684704b780353145ce2842bc"
+}

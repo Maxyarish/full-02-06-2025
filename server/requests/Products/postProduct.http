@@ -1,0 +1,11 @@
+POST http://localhost:3000/products HTTP/1.1
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDk5MGYxZGVhYmRiNDNjMjEzNWFjMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTg5NTc5OSwiZXhwIjoxNzUyNTAwNTk5fQ.jUGaO-WT9xTO1KX_M9KNfgzcwsKurVTkcA6xtshM00k
+
+{
+  "title": "Laptop UltraBook 15",
+  "description": "Lightweight and powerful ultrabook with a 15-inch display, SSD storage, and all-day battery life. Great for professionals and students.",
+  "price": 1299.00,
+  "stockQty": 15,
+  "category": "684998ae853b4f84e209f04b"
+}

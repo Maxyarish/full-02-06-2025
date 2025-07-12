@@ -1,0 +1,19 @@
+POST http://localhost:3000/orders HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDk5MGYxZGVhYmRiNDNjMjEzNWFjMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjA3NDMyNCwiZXhwIjoxNzUyNjc5MTI0fQ.yReSi3iOvqaT45ifL4GYx1WdlUmv-bKDTKoeUi9PaaA
+
+{
+    "products":[
+        {
+            "productId": "686bcf7a5c028b6ec77d731c",
+            "quantity": 2
+        },
+        {
+            "productId": "686bcfce5c028b6ec77d731f",
+            "quantity":1
+        }
+    ],
+    "shippingPhone":"067-123-45-74",
+    "shippingPrice": 0,
+    "shippingMethod": "free"
+}

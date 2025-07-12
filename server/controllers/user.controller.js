@@ -41,7 +41,7 @@ module.exports.loginUser = async (req, res, next) => {
     const token = jwt.sign(
       { id: user._id, role: user.role },
       CONSTANTS.JWT_SECRET,
-      { expiresIn: "7d" }
+      { expiresIn: CONSTANTS.JWT_EXPIRES }
     );
 
     res.status(200).send({ data: { token, user } });
@@ -71,7 +71,7 @@ module.exports.updateUser = async (req, res, next) => {
     if (updateData.password) {
       updateData.password = await bcrypt.hash(updateData.password, 10);
     }
-    const user = await User.findByIdAndUpdate(req.params.isUser, updateData, {
+    const user = await User.findByIdAndUpdate(req.params.idUser, updateData, {
       new: true,
     });
     if (!user) {
