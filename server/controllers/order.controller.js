@@ -67,7 +67,7 @@ module.exports.getAllOrders = async (req, res, next) => {
 module.exports.getAccountOrders = async (req, res, next) => {
   try {
     const { limit, skip } = req.pagination;
-    const orders = await Order.find({ user: req.user._id }).populate("product.productId",'title',).skip(skip).limit(limit)
+    const orders = await Order.find({ user: req.user._id }).populate("products.productId",'title',).skip(skip).limit(limit)
     res.status(200).send({ data: orders });
   } catch (error) {
     next(error);
@@ -75,7 +75,7 @@ module.exports.getAccountOrders = async (req, res, next) => {
 }
 module.exports.getOrder= async (req, res, next) => {
   try {
-    const {orderId}=req.params.orderId
+    const {orderId}=req.params
     const order = await Order.findById(orderId)
       .populate("user", "email")
       .populate("products.productId", "title");

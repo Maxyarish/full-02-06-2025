@@ -1,0 +1,17 @@
+.form{
+    width:400px;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+background-color: rgb(236, 236, 236);
+
+    label{
+        display: flex;
+        flex-direction: column;
+        
+    }
+}
+img{
+    width: 100%;
+}

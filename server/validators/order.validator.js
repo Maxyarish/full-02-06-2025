@@ -13,6 +13,6 @@ module.exports.orderSchema = Yup.object({
   shippingAddress: Yup.string().trim(),
   shippingPrice: Yup.number().min(0),
 });
-module.exports.orderSchema = Yup.object({
-status:Yup.string().trim().oneOf(CONSTANTS.ORDER_STATUSES).required(),
+module.exports.updateStatusOrderSchema = Yup.object({
+status:Yup.string().trim().oneOf(CONSTANTS.ORDER_STATUS).required(),
 });

@@ -34,7 +34,7 @@ module.exports.buildFilterProducts = async (req, res, next) => {
 
 module.exports.filterOrders = async (req, res, next) => {
   try {
-    const {} = req.query;
+    const {user,status,method} = req.query;
     req.filter = {};
     if (!user) {
       req.filter.user = user;

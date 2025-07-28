@@ -8,6 +8,10 @@ module.exports.createProduct = async (req, res, next) => {
   try {
     const images = req.files?.map((item) => item.filename) || [];
     const product = await Product.create({ ...req.body, images });
+    await product.populate({
+      path:'category',
+      select:'name'
+    })
     res.status(201).send({ data: product });
   } catch (error) {
     if (error.code === 11000) {
@@ -22,13 +26,13 @@ module.exports.createProduct = async (req, res, next) => {
 module.exports.getAllProducts = async (req, res, next) => {
   const { limit, skip } = req.pagination;
   try {
-    const products = await Product.find()
-      .populate("category")
-      .limit(skip)
-      .skip(limit);
-    if (!products) {
-      throw createError(404, "Products not found");
-    }
+    const products = await Product.find(req.filter)
+      .populate({
+        path:'category',
+        select: 'name',
+      }).limit(limit)
+      .skip(skip);
+    
     res.status(200).send({ data: products });
   } catch (error) {
     next(error);
@@ -69,9 +73,12 @@ module.exports.updateProduct = async (req, res, next) => {
 
     const updatedImages =
       req.files?.map((item) => item.filename) || product.images;
-    Object.assign(product, req.body({ images: updatedImages }));
+    Object.assign(product, req.body,{ images: updatedImages });
     await product.save();
-
+ await product.populate({
+      path:'category',
+      select:'name'
+    })
     res.status(200).send({ data: product });
   } catch (error) {
     if (error.code === 11000) {
