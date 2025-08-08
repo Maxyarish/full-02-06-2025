@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./Admin.module.scss";
 import { createProductThunk, updateProductThunk } from "../../store/productsSlice";
+import { productCreateSchema, productUpdateSchema } from "../../validation/product.validate";
 
 const AdminProductsForm = (props) => {
   const {selectedProduct,cancelForm}=props
@@ -35,7 +36,7 @@ const AdminProductsForm = (props) => {
    cancelForm()
   }
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={selectedProduct?productUpdateSchema:productCreateSchema}>
       {({ setFieldValue }) => {
         const showOption = (category) => (
           <option key={category._id} value={category._id}>

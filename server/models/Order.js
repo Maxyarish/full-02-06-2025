@@ -15,7 +15,7 @@ const orderSchema = new mongoose.Schema(
           ref: "Product",
           required: true,
         },
-        ProductPrice: {
+        productPrice: {
           type: Number,
           ref: "Product",
           required: true,
@@ -37,7 +37,7 @@ const orderSchema = new mongoose.Schema(
       enum: CONSTANTS.SHIPPING_METHODS,
       default: CONSTANTS.SHIPPING_METHODS[0],
     },
-    shippingAddress: {
+    shippingAdress: {
       type: String,
     },
     shippingPrice: {

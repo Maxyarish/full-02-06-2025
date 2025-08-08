@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { deleteCategoryThunk, getAllCategoriesThunk } from "../../store/categoriesSlice";
 import { useDispatch, useSelector } from "react-redux";
-import AdminCategoriesForm from "./AdmincategoriesForm";
+import AdminCategoriesForm from "./AdminCategoriesForm";
 
 const CategoryRow = (props) => {
   const dispatch=useDispatch();

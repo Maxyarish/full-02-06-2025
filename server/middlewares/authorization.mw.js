@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const createError = require("http-errors");
 const CONSTANTS = require("../constants");
 const User = require("../models/User");
+const Order = require("../models/Order");
 
 module.exports.authorization = async (req, res, next) => {
   try {
@@ -38,3 +39,17 @@ module.exports.isOwner = async (req, res, next) => {
   }
   next(createError(403, "Only Owner!"));
 };
+module.exports.canUpdateOrderStatus=async(req,res,next)=>{
+  try {
+    const order=await Order.findById(req.params.orderId)
+    if(!order){
+      return next(404,'order not found')
+    }
+    if (req.user.role==='admin' || req.user._id===ordet.user.toString()) {
+      return next()
+    }
+return next(createError(403,'you do not have permission'))
+  } catch (error) {
+    next(createError(403,'you do not have permission'))
+  }
+}

@@ -18,6 +18,8 @@ const CONSTANTS = {
     "deliwered ",
     "cancelled",
   ],
+  STRIPE_SECRET_KEY:'sk_test_51RrKjPEia9CUNvch7t2pOBtoXXFzlPgWuVWNkHRrm3HMnflysyiWeIe0JltjTiNe3ruITWOesv4bxKTnSiDHG5xo009C3MVPRZ',
+  CLIENT_URL:'http://localhost:5173'
 };
 
 module.exports = CONSTANTS;

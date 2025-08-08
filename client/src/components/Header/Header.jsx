@@ -8,9 +8,8 @@ import { logoutUserThunk } from "../../store/authSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const { categories } = useSelector(
-    (state) => state.categories
-  );
+  const { categories } = useSelector((state) => state.categories);
+  const {items,total}=useSelector((state)=>state.cart)
   useEffect(() => {
     if (categories?.length === 0) {
       dispatch(getAllCategoriesThunk());
@@ -43,6 +42,14 @@ const Header = () => {
         )}
       </div>
       <hr />
+      <div>
+        <NavLink to='/'>logo</NavLink>
+        <NavLink to='/cart'>cart
+         {  items.length>0 && <span>{items.length}</span>}
+           <span>{total.toFixed(2)} uah</span>
+        </NavLink>
+    
+      </div>
       <nav>
         <ul className={styles["main-menu"]}>
           <li>

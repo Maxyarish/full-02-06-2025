@@ -27,7 +27,7 @@ const AdminProducts = () => {
     setSelectedProduct(product)
   }
   const showProducts = (product) => (
-    <AdminProductRow key={product._id} product={product} handleUpdate={handleUpdate}/>
+    <AdminProductRow key={product._id} product={product} handleUpdate={handleUpdate} />
   );
   return (
     <section>

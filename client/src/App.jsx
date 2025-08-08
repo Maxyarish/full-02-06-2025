@@ -10,6 +10,11 @@ import RegisterForm from "./components/Auth/RegisterForm";
 import AdminPage from "./pages/AdminPage";
 import AdminCategories from "./components/Admin/AdminCategories";
 import AdminProducts from "./components/Admin/AdminProducts";
+import CartPage from "./pages/CartPage";
+import CancelPage from "./pages/CancelPage";
+import SuccessPage from "./pages/SuccessPage";
+import AdminOrders from "./components/Admin/AdminOrders";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +31,10 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/success/:idOrder" element={<SuccessPage />} />
+          <Route path="/cancel/:idOrder" element={<CancelPage />} />
+          <Route path="/products/:idProduct" element={ProductPage}/>
           <Route
             path="/admin-panel"
             element={
@@ -48,9 +57,13 @@ function App() {
                 user?.role === "admin" ? <AdminProducts /> : <Navigate to="/" />
               }
             />
-          
+            <Route
+              path="/admin-panel/orders"
+              element={
+                user?.role === "admin" ? <AdminOrders /> : <Navigate to="/" />
+              }
+            />
           </Route>
-
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

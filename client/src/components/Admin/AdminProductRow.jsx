@@ -3,7 +3,6 @@ import CONSTANTS from "../../constants";
 import { useDispatch } from "react-redux";
 import { deleteProductThunk } from "../../store/productsSlice";
 
-
 const AdminProductRow = (props) => {
    const dispatch=useDispatch()
     const {product,handleUpdate}=props;
@@ -22,7 +21,7 @@ const AdminProductRow = (props) => {
       <td>{category?.name}</td>
       <td>{isSale?'yes':'no'}</td>
       <td>{images.map(showImages)}</td>
-       <td><button onClick={()=>{handleUpdate(product)}}> Update</button></td>
+       <td><button onClick={()=>{handleUpdate(product) }}> Update</button></td>
        <td><button onClick={()=>{handleDelete(_id)}}>Delete</button></td>
      
     </tr>
