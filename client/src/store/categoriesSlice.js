@@ -1,14 +1,26 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getAllCategories,
   createCategory,
   updateCategory,
   deleteCategory,
-} from '../api';
-import { pendingCase, rejectedCase } from './function';
+  getOneCategory,
+} from "../api";
+import { pendingCase, rejectedCase } from "./function";
 
+export const getOneCategoryThunk = createAsyncThunk(
+  "categories/getOneCategoryThunk",
+  async (id, thunkAPI) => {
+    try {
+      const response = await getOneCategory(id);
+      return response.data.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.message);
+    }
+  }
+);
 export const getAllCategoriesThunk = createAsyncThunk(
-  'categories/getAllCategoriesThunk',
+  "categories/getAllCategoriesThunk",
   async (_, thunkAPI) => {
     try {
       const response = await getAllCategories();
@@ -20,7 +32,7 @@ export const getAllCategoriesThunk = createAsyncThunk(
 );
 
 export const createCategoryThunk = createAsyncThunk(
-  'categories/createCategoryThunk',
+  "categories/createCategoryThunk",
   async (values, thunkAPI) => {
     try {
       const response = await createCategory(values);
@@ -32,7 +44,7 @@ export const createCategoryThunk = createAsyncThunk(
 );
 
 export const updateCategoryThunk = createAsyncThunk(
-  'categories/updateCategoryThunk',
+  "categories/updateCategoryThunk",
   async ({ id, values }, thunkAPI) => {
     try {
       const response = await updateCategory(id, values);
@@ -44,7 +56,7 @@ export const updateCategoryThunk = createAsyncThunk(
 );
 
 export const deleteCategoryThunk = createAsyncThunk(
-  'categories/deleteCategoryThunk',
+  "categories/deleteCategoryThunk",
   async (id, thunkAPI) => {
     try {
       const response = await deleteCategory(id);
@@ -56,15 +68,24 @@ export const deleteCategoryThunk = createAsyncThunk(
 );
 
 const categoriesSlice = createSlice({
-  name: 'categories',
+  name: "categories",
   initialState: {
     categories: [],
     error: null,
     isLoading: false,
+    selectedCategory: null,
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(createCategoryThunk.pending, pendingCase    );
+    builder.addCase(getOneCategoryThunk.pending, pendingCase);
+    builder.addCase(getOneCategoryThunk.rejected, rejectedCase);
+    builder.addCase(getOneCategoryThunk.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+      state.selectedCategory=action.payload
+    });
+
+    builder.addCase(createCategoryThunk.pending, pendingCase);
     builder.addCase(createCategoryThunk.rejected, rejectedCase);
     builder.addCase(createCategoryThunk.fulfilled, (state, action) => {
       state.isLoading = false;

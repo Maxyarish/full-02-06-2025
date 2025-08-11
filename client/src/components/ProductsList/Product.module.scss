@@ -1,0 +1,24 @@
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 40vh;
+  > div {
+    width: 50%;
+  }
+};
+
+.images {
+
+  div,
+  img {
+    width: 60%;
+  }; 
+     div>div>div:first-child{
+        height:  40vh; ;
+    }
+}
+
+.info{
+padding-left: 50px;
+}

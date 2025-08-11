@@ -15,6 +15,8 @@ import CancelPage from "./pages/CancelPage";
 import SuccessPage from "./pages/SuccessPage";
 import AdminOrders from "./components/Admin/AdminOrders";
 import ProductPage from "./pages/ProductPage";
+import CategoryPage from "./pages/CategoryPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,10 +33,12 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
+            <Route path="/account" element={<ProfilePage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/success/:idOrder" element={<SuccessPage />} />
           <Route path="/cancel/:idOrder" element={<CancelPage />} />
-          <Route path="/products/:idProduct" element={ProductPage}/>
+             <Route path="/categories/:idCategory" element={<CategoryPage />} />
+          <Route path="/products/:idProduct" element={<ProductPage/>}/>
           <Route
             path="/admin-panel"
             element={

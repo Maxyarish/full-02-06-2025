@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOneProductThunk } from "../store/productsSlice";
 import Product from "../components/ProductsList/Product";
-//dw
+
 const ProductPage = () => {
   const { idProduct } = useParams();
   const { selectedProduct, isLoading, error } = useSelector(
