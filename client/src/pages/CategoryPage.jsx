@@ -13,7 +13,7 @@ const CategoryPage = () => {
 
   useEffect(() => {
     if (idCategory) {
-      dispatch(getOneCategoryThunk());
+      dispatch(getOneCategoryThunk(idCategory));
     }
   }, [dispatch, idCategory]);
   if (error) {

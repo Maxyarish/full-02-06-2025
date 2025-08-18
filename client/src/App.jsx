@@ -20,7 +20,8 @@ import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const dispatch = useDispatch();
-  const { user, isLoading, error } = useSelector((state) => state.auth);
+  const { user, error } = useSelector((state) => state.auth);
+
   useEffect(() => {
     dispatch(getAccountThunk());
   }, [dispatch]);
@@ -33,18 +34,28 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
-            <Route path="/account" element={<ProfilePage />} />
+          <Route path="/account" element={<ProfilePage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/success/:idOrder" element={<SuccessPage />} />
           <Route path="/cancel/:idOrder" element={<CancelPage />} />
-             <Route path="/categories/:idCategory" element={<CategoryPage />} />
-          <Route path="/products/:idProduct" element={<ProductPage/>}/>
+          <Route path="/categories/:idCategory" element={<CategoryPage />} />
+          <Route path="/products/:idProduct" element={<ProductPage />} />
           <Route
             path="/admin-panel"
             element={
               user?.role === "admin" ? <AdminPage /> : <Navigate to="/" />
             }
           >
+            <Route
+              index
+              element={
+                user?.role === "admin" ? (
+                  <AdminCategories />
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
+            />
             <Route
               path="/admin-panel/categories"
               element={

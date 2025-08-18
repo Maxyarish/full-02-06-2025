@@ -36,13 +36,13 @@ module.exports.filterOrders = async (req, res, next) => {
   try {
     const {user,status,method} = req.query;
     req.filter = {};
-    if (!user) {
+    if (user) {
       req.filter.user = user;
     }
-    if (!status) {
+    if (status) {
       req.filter.status = status;
     }
-    if (!method) {
+    if (method) {
       req.filter.shippingMethod = method.replace("_", "");
     }
     next();

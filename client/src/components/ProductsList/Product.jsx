@@ -31,7 +31,7 @@ const Product = (props) => {
       <div className={styles.info}>
         <h2>{title}</h2>
         <p>
-          category:{''}
+          category:
           <Link to={`/categories/${category?._id}`}>{category.name}</Link>
         </p>
         <p>{price} uah</p>

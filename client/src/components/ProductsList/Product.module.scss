@@ -6,19 +6,26 @@
   > div {
     width: 50%;
   }
-};
+}
 
 .images {
-
   div,
   img {
     width: 60%;
-  }; 
-     div>div>div:first-child{
-        height:  40vh; ;
-    }
+  }
+  div > div > div:first-child {
+    height: 40vh;
+  }
 }
 
-.info{
-padding-left: 50px;
+.info {
+  padding-left: 50px;
+}
+:global(.image-gallery-slide img) {
+  height: 300px;
+  object-fit: contain;
+}
+:global(.image-gallery-thumbnail img) {
+  height: 40px;
+  object-fit: contain;
 }

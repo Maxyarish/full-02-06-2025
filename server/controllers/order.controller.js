@@ -3,7 +3,14 @@ const Product = require("../models/Product");
 const Order = require("../models/Order");
 const CONSTANTS = require("../constants");
 const stripe = require("stripe")(CONSTANTS.STRIPE_SECRET_KEY);
-
+module.exports.countOrders=async(req,res,next)=>{
+  try {
+    const orders= await Order.countDocuments();
+    res.status(200).send({data:orders})
+  } catch (error) {
+     next(error);
+  }
+}
 module.exports.createCheckoutSession = async (req, res, next) => {
   try {
     const session = await stripe.checkout.sessions.create({
@@ -85,6 +92,7 @@ module.exports.getAllOrders = async (req, res, next) => {
   try {
     const { limit, skip } = req.pagination;
     const orders = await Order.find(req.filter)
+     .sort({createdAt:-1})
       .populate("user", "email name")
       .populate("products.productId", "title")
       .skip(skip)
@@ -99,6 +107,7 @@ module.exports.getAccountOrders = async (req, res, next) => {
   try {
     const { limit, skip } = req.pagination;
     const orders = await Order.find({ user: req.user._id })
+    .sort({createdAt:-1})
       .populate("products.productId", "title")
       .skip(skip)
       .limit(limit);
@@ -118,7 +127,7 @@ module.exports.getOrder = async (req, res, next) => {
       throw createError(404, "Order not found");
     }
     if (req.user.role !== "admin") {
-      if (req.user_.id.toString() !== order.user._id.toString()) {
+      if (req.user._id.toString() !== order.user._id.toString()) {
         throw createError(403, "You are not authorized to view this order");
       }
     }

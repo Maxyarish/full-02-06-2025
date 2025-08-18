@@ -1,7 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { registerUser, loginUser, getAccount } from "../api";
+import { registerUser, loginUser, getAccount, updateUser } from "../api";
 import { pendingCase, rejectedCase } from "./function";
 
+export const updateUserThunk=createAsyncThunk(
+  'auth/updateUserThunk',
+  async({id,values},thunkAPI)=>{
+    try {
+      const response = await updateUser(id,values);
+      return response.data.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
 export const registerUserThunk = createAsyncThunk(
   "auth/registerUser",
   async (values, thunkAPI) => {
@@ -44,11 +55,6 @@ export const logoutUserThunk = createAsyncThunk("auth/logoutUser", async () => {
   localStorage.removeItem("token");
 });
 
-const fulfilledCase = (state, action) => {
-  (state.isLoading = false),
-    (state.error = null),
-    (state.user = action.payload);
-};
 
 const authSlice = createSlice({
   name: "auth",
@@ -59,23 +65,27 @@ const authSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(registerUserThunk.pending, pendingCase);
-    builder.addCase(loginUserThunk.pending, pendingCase);
-    builder.addCase(getAccountThunk.pending, pendingCase);
+    builder.addCase(updateUserThunk.pending, pendingCase);
+    builder.addCase(updateUserThunk.rejected, rejectedCase);
+    builder.addCase(updateUserThunk.fulfilled,(state,action)=>{
+        state.user=null;
+      state.error=null
+      state.user=action.payload
+    });
     builder.addCase(logoutUserThunk.pending, pendingCase);
-
-    builder.addCase(registerUserThunk.rejected, rejectedCase);
-    builder.addCase(loginUserThunk.rejected, rejectedCase);
-    builder.addCase(getAccountThunk.rejected, rejectedCase);
-    builder.addCase(logoutUserThunk.rejected, rejectedCase);
-
-    builder.addCase(registerUserThunk.fulfilled, fulfilledCase);
-    builder.addCase(loginUserThunk.fulfilled, fulfilledCase);
-    builder.addCase(getAccountThunk.fulfilled, fulfilledCase);
-    builder.addCase(logoutUserThunk.fulfilled, (state)=>{
+      builder.addCase(loginUserThunk.rejected, rejectedCase);
+    builder.addCase(logoutUserThunk.fulfilled, (state,action)=>{
       state.user=null;
       state.error=null
+      state.user=action.payload
     });
+    builder.addCase(getAccountThunk.rejected, rejectedCase);
+      builder.addCase(getAccountThunk.pending, pendingCase);
+   builder.addCase(getAccountThunk.fulfilled, (state, action) => {
+     state.user = action.payload;
+     state.error = null;
+     state.user=action.payload;
+   });
   },
 });
 export default authSlice.reducer;

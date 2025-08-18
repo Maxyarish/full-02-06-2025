@@ -1,23 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrderForAdminThunk } from "../../store/orderSlice";
+import { getOrderForAdminThunk, getOrdersAmountThunk } from "../../store/orderSlice";
 import AdminOrderRow from "./AdminOrderRow";
+import Pagination from "../Pagination/Pagination";
+import CONSTANTS from "../../constants";
 
 const AdminOrders = () => {
   const dispatch = useDispatch();
-  const { orders } = useSelector((state) => state.orders);
+  const [page, setPage] = useState(1);
+  const { orders, totalOrders } = useSelector((state) => state.orders);
+  const [amount, setAmount] = useState(CONSTANTS.ORDER_AMOUNT[0]);
   useEffect(() => {
-    if (orders?.length === 0) {
-      dispatch(getOrderForAdminThunk());
-    }
-  }, [dispatch, orders?.length]);
+    dispatch(getOrdersAmountThunk());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(getOrderForAdminThunk({ page, amount }));
+  }, [dispatch, page, amount]);
+
   const showOrderRow = (order) => (
     <AdminOrderRow key={order._id} order={order} />
   );
+
   return (
     <section>
-      <h2>Admin Orders</h2>
-      <table >
+      <h1>Admin Orders</h1>
+      <div>
+        <h2>Total Orders: {totalOrders}</h2>
+        <Pagination page={page} setPage={setPage} amount={amount} total={totalOrders} setAmount={setAmount}/>
+      </div>
+
+      <table>
         <thead>
           <tr>
             <th rowSpan={2}>user email</th>

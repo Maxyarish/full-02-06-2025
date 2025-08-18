@@ -14,10 +14,10 @@ const AdminOrderRow = (props) => {
     status,
   } = order;
   const showProducts = (product) => (
-    <tr>
-      <td>{product.productId.title}</td>
-      <td>{product.productPrice}</td>
-      <td>{product.quantity}</td>
+    <tr key={product._id}>
+      <td>{product.productId?.title}</td>
+      <td>{product?.productPrice}</td>
+      <td>{product?.quantity}</td>
     </tr>
   );
   return (

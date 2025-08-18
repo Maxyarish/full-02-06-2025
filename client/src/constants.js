@@ -3,6 +3,7 @@ const CONSTANTS = {
   UPLOAD_FOLDER: "uploads",
   SHIPPING_METHODS: ["free", "Nova Post", "ukr post"],
   SHIPPING_PRICE: { free: 0, "nova post": 80, "ukr post": 50 },
+  ORDER_AMOUNT:[3,4,6,8,10],
   ORDER_STATUS: [
     "new",
     "paid",
