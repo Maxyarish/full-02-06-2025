@@ -7,6 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { createOrderThunk } from "../../store/orderSlice";
 import { clearCart } from "../../store/cartSlice";
 import { createCheckoutSession } from "../../api";
+import styles from "./Cart.module.scss";
 
 const stripePromise = loadStripe(CONSTANTS.STRIPE_SECRET_KEY);
 
@@ -51,7 +52,7 @@ const CartDeliveryForm = (props) => {
     >
       {() => {
         return (
-          <Form>
+          <Form className={styles.inputs}>
             <label>
               <span>phone</span>
               <Field name="shippingPhone" type="tel" />

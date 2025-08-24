@@ -41,7 +41,7 @@ const ProfilePage = () => {
   return (
     <section className={styles.wrapper}>
       <div className={styles["flex-box"]}>
-        <article className={styles["personal-info"]}>
+        <article >
           {isUpdate ? (
             <UpdateUserForm setIsUpdate={setIsUpdate}/>
           ) : (
@@ -56,7 +56,6 @@ const ProfilePage = () => {
       </div>
 
       <div>{idOrder && <OrderDetails idOrder={idOrder} />}</div>
-          <hr />
       <div>
         {isLoading && <p>Loading</p>}
         {errorOrders && <p>{errorOrders}</p>}

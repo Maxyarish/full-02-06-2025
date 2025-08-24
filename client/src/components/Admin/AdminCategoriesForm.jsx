@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { createCategoryThunk, updateCategoryThunk } from "../../store/categoriesSlice";
+import styles from "./Admin.module.scss";
 
 const AdminCategoriesForm = (props) => {
 const {cancelForm,selectedCategory}=props;
@@ -20,9 +21,9 @@ dispatch(updateCategoryThunk({id:selectedCategory._id,values}))
       {() => {
         return (
           <Form > 
-            <label>
+            <label className={styles['category-label']}>
               <span>Category name:</span>
-              <Field type="text" name="name" />
+              <Field type="text" name="name"  placeholder='name'/>
               <ErrorMessage name="name" />
             </label>
             <button type="submit">{selectedCategory?'Update':'create'}</button>

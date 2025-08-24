@@ -54,7 +54,7 @@ const AdminCategories = () => {
   return (
     <section>
       {error && error.includes('409') && <p>Error! Category has products</p>}
-      <h2>Admin Categories</h2>
+      <h1>Admin Categories</h1>
       <button onClick={handleCreate}>create new category</button>
       {isCreating && (
         <AdminCategoriesForm

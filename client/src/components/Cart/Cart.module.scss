@@ -5,3 +5,22 @@
     background-color: rgb(224, 224, 224);
 
 }
+.cart{
+        padding: 0 50px;
+}
+.inputs{
+    display: flex;
+    border:2px solid rgb(193, 193, 193);
+    border-radius:15px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.208);
+    padding: 20px;
+    flex-direction: column;
+    font-size: large;
+    gap: 15px;
+  input{
+    width: 100%;
+    padding:12px;
+    border:2px solid rgb(220, 220, 220);
+    border-radius:10px
+  }
+}

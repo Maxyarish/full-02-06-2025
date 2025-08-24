@@ -23,7 +23,6 @@ const AdminProductRow = (props) => {
       <td>{images.map(showImages)}</td>
        <td><button onClick={()=>{handleUpdate(product) }}> Update</button></td>
        <td><button onClick={()=>{handleDelete(_id)}}>Delete</button></td>
-     
     </tr>
    
   );

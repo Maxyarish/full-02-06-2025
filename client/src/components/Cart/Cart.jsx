@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import { clearCart } from "../../store/cartSlice";
 import CartDeliveryForm from "./CartDeliveryForm";
+import styles from "./Cart.module.scss"; 
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -18,12 +19,12 @@ const Cart = () => {
     dispatch(clearCart());
   };
   return (
-    <section>
+    <section className={styles.cart}>
                {error && <h3>{error}</h3>}
       {items?.length === 0 && <p>empty cart</p>}
       <ul>{items?.map(showItem)}</ul>
       {items?.length && <button onClick={handleClear}>clear cart</button>}
-      <p>{`total:${total.toFixed(2)} грн`}</p>
+      <h2>{`total:${total.toFixed(2)} грн`}</h2>
       <CartDeliveryForm items={items}/>
     </section>
   );

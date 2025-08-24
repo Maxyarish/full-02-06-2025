@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateValidationSchema } from "../../validation/user.validation";
 import { updateUserThunk } from "../../store/authSlice";
-
+import styles from "./authForm.module.scss";
 const UpdateUserForm = (props) => {
     const {setIsUpdate}=props
   const { user, error } = useSelector((state) => state.auth);
@@ -33,10 +33,11 @@ const UpdateUserForm = (props) => {
       onSubmit={onSubmit}
     >
       {() => {
-        return  (
-          <Form>
+        return  ( 
+          <div className={styles['center-container']}>
+          <Form className={styles['update-profile']}>
             {error && <p>Email is already exists</p>}
-            <h2>Sign Up</h2>
+            <h2>Update Profile</h2>
             <Field name="name" type="text" placeholder="Name" />
             <ErrorMessage name="name" />
             <Field name="email" type="email" placeholder="Email" />
@@ -44,9 +45,10 @@ const UpdateUserForm = (props) => {
             <Field name="password" type="password" placeholder="Password" />
             <ErrorMessage name="password" />
             <button type="submit" >
-              Register
+              update
             </button>
           </Form>
+          </div>
         );
       }}
     </Formik>

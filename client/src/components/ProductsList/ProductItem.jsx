@@ -21,18 +21,14 @@ dispatch(addTocart(product))
   const navigateProduct=()=>{navigate(`/products/${product._id}`)}
   return (
     <article className={styles.product} onClick={navigateProduct}>
-
-   {isSale && <p>sale</p>}
+       <h1>{title}</h1>
       <div className={styles.pic}>
         <img
-          src={`${CONSTANTS.BASE_URL}/${CONSTANTS.UPLOAD_FOLDER}/${images[0]}`}
-          alt={title}
-        />
+          src={`${CONSTANTS.BASE_URL}/${CONSTANTS.UPLOAD_FOLDER}/${images[0]}`} />
       </div>
-      <h3>{title}</h3>
-      <p>price:{price}</p>
-      <p>{category?.name}</p>
-      <p>{stockQty > 0 ? "Available" : "Not Available"}</p>
+      <h2>price:{price} uah</h2>
+      <h2>category: {category?.name}</h2>
+      <h2 style={{color:stockQty>0?'#4CAF50':'#d32f2f'}}> {stockQty > 0 ? "Available" : "Not Available"}</h2>
       <Icon path={mdiCartArrowDown} size={1} onClick={handleAddToCart}/>
          { isSale && <Icon path={mdiSale} width={25} color={'red'}/>}
     </article>

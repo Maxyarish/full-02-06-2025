@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-
+import styles from "./Pages.module.scss";
 const AdminPage = () => {
   return (
-    <div>
+    <div className={styles['admin-panel']}>
       <h1>Admin Page</h1>
       <ul>
         <li>

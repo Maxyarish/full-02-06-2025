@@ -31,7 +31,7 @@ const AdminProducts = () => {
   );
   return (
     <section>
-      <h2>Products</h2>
+      <h1>Products</h1>
       {error && <p>{error}</p>}
       <table>
         <thead>

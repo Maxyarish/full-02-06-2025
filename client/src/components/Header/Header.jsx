@@ -18,51 +18,50 @@ const Header = () => {
   }, [dispatch, categories?.length]);
 
   const showCategory = (category) => (
-    <li key={category._id}>
-      <NavLink to={`/categories/${category._id}`}>{category.name}</NavLink>
-    </li>
+      <li key={category._id} >
+        <NavLink to={`/categories/${category._id}`}>{category.name}</NavLink>
+      </li>
+
   );
-  const logout = () => (
-    dispatch(logoutUserThunk()),
-    dispatch(resetOrders())
-  )
+  const logout = () => (dispatch(logoutUserThunk()), dispatch(resetOrders()));
   return (
     <header className={styles.header}>
       <div className={styles["top-header"]}>
         {user ? (
           <>
-            <Link to='/account'>Hi, {user?.name}</Link>
+            <Link to="/account">Hi, {user?.name}!</Link>
             {user?.role === "admin" && (
               <Link to="admin-panel">Admin Panel</Link>
             )}
             <button onClick={logout}>Log out </button>
           </>
-          
         ) : (
           <>
-           <Link to="/register">Sign up</Link>
+            <Link to="/register">Sign up</Link>
             <Link to="/login">Sign in</Link>
-           
           </>
         )}
       </div>
-    
-      <nav>
-        <ul className={styles["main-menu"]}>
+      <nav >
+        <ul  className={styles["main-menu"]}>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/" className={styles.home}>
+              Home
+            </NavLink>
           </li>
           {categories?.map(showCategory)}
+
+          <ul className={styles.cart}>
+            <li >
+              <NavLink to="/cart">
+                cart:
+              {items.length > 0 && <span>{items.length}</span>}
+              <span>{total?.toFixed(2)} items</span>
+            </NavLink>
+            </li>
+            </ul>
         </ul>
       </nav>
-        <div className={styles['logo-cart']}>
-        <NavLink to="/">logo</NavLink>
-        <NavLink to="/cart">
-          cart:
-          {items.length > 0 && <span>{items.length}</span>}
-          <span>{total?.toFixed(2)}  items</span>
-        </NavLink>
-      </div>
     </header>
   );
 };
