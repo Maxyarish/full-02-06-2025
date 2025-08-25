@@ -1,14 +1,18 @@
 .product {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  height: 40vh;
+ justify-content: center;
+  height: 45vh;
+  padding: 10px;
   > div {
-    width: 50%;
+    width: 40%;
   }
 }
 
 .images {
+    border:2px solid rgb(212, 212, 212);
+    border-radius:15px;
+    height: 100%;
   div,
   img {
     width: 60%;

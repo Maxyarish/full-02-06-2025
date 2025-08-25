@@ -2,7 +2,6 @@ import React from "react";
 import CONSTANTS from "../../constants";
 import { useDispatch } from "react-redux";
 import { deleteProductThunk } from "../../store/productsSlice";
-
 const AdminProductRow = (props) => {
    const dispatch=useDispatch()
     const {product,handleUpdate}=props;
@@ -13,7 +12,7 @@ const AdminProductRow = (props) => {
      }
   return (
    
-    <tr>
+    <tr >
       <td>{title}</td>
       <td>{description}</td>
       <td>{price}</td>

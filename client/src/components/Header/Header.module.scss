@@ -27,6 +27,7 @@
 
 .main-menu {
   display: flex;
+  justify-content: center;
   font-size: xx-large;
       white-space: nowrap;
   gap: 10px;
@@ -39,10 +40,9 @@
   .cart{
     border: 0.5px solid transparent;
     border-radius: 15px;
-    background-color: #9575cd;
+    background-color: #7955b9;
   }
   a {
- 
     border: 0.5px solid transparent;
     padding: 8px 30px;
     border-radius: 15px;
@@ -81,7 +81,6 @@
 @media screen and (max-width: 585px) {
   .header {
     padding: 35px 10px;
-        box-sizing: border-box; 
   }
 }
 
@@ -94,7 +93,6 @@
 @media screen and (max-width: 905px) {
   .main-menu {
   font-size: xx-large;
-  gap: 0px;
   a {
     padding: 8px 20px;
 }
@@ -102,7 +100,6 @@
 }
 @media screen and (max-width: 805px) {
   .main-menu {
-  gap: 0px;
   a {
     padding: 8px 10px;
 }

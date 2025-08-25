@@ -54,9 +54,8 @@ const Header = () => {
           <ul className={styles.cart}>
             <li >
               <NavLink to="/cart">
-                cart:
-              {items.length > 0 && <span>{items.length}</span>}
-              <span>{total?.toFixed(2)} items</span>
+                cart:{items.length > 0 && <span>{items.length}</span>}
+            {total?.toFixed(2)} items
             </NavLink>
             </li>
             </ul>

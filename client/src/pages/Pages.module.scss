@@ -1,6 +1,6 @@
 
 .home-page {
-  padding: 0px 135px;
+  padding: 0px 9%;
 font-size:large
 }
 .wrapper{
@@ -11,13 +11,26 @@ font-size:large
   padding: 0px 55px;
 }
 .category{
-  padding: 0px 135px;
-  font-size:large
+  padding: 0px 9%;
 }
 
-@media screen and (max-width:1065px){
+@media screen and (max-width:1470px){
 .category{
-  padding: 0px 135px;
-  font-size:large
+  padding: 0px 6%;
+}
+.home-page {
+  padding: 0px 6%;
+}
+ .admin-panel{
+  padding: 0px 25px;
+}
+
+}
+@media screen and (max-width:925px){
+.category{
+  padding: 0px 5%;
+}
+.home-page {
+  padding: 0px 5%;
 }
 }

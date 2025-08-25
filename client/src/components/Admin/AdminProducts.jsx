@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsThunk } from "../../store/productsSlice";
 import AdminProductRow from "./AdminProductRow";
 import AdminProductsForm from "./AdminProductsForm";
-
+import styles from "./Admin.module.scss"
 const AdminProducts = () => {
   const dispatch = useDispatch();
   const { products, error } = useSelector((state) => state.products);
@@ -30,7 +30,7 @@ const AdminProducts = () => {
     <AdminProductRow key={product._id} product={product} handleUpdate={handleUpdate} />
   );
   return (
-    <section>
+    <section className={styles['main-border']}>
       <h1>Products</h1>
       {error && <p>{error}</p>}
       <table>

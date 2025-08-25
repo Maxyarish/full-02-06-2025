@@ -6,21 +6,22 @@
   flex-wrap: wrap;
   gap: 25px;
 }
-
 .product {
   width: 385px;
-  height: 515px;
+  height: 490px;
   padding: 0 30px;
   background-color: rgb(252, 252, 252);
   border: 1.5px solid $grey100;
   border-radius: 30px;
   white-space: nowrap;
-    font-size: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
+      font-size: 0.85rem;
+  
 h1 {
-    margin-top: 20px;
-    margin-bottom: 0px; 
+      font-size: x-large;
+    margin-top: 15px;
+      margin-bottom:0; 
   }
 h2{
   font-weight: 400;
@@ -28,8 +29,9 @@ h2{
 }
 
 .pic {
-  width: 100%;
+width: 100%;
   height: 240px;
+
 
   background-color: #cbaff75c;
   border-radius: 30px;
@@ -40,29 +42,23 @@ h2{
     object-fit: cover;
   }
 }
-// @media screen and (max-width: 655px) {
-// .products {
-//   display: flex;
-//   justify-content: center;
-//   flex-wrap: wrap;
-//   gap: 25px;
 
-// }
-// .product {
-//   width: 280px;
-//   padding: 10px;
-//   border: 3px solid $grey100;
-//   border-radius: 40px;
-// }
-// .pic {
-//   width: 255px;
-//   height: 255px;
-//   background-color: $grey100;
-//     border-radius: 40px;
-//   img {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//   }
-// }
-// }
+@media screen and (max-width:925px) {
+  .product {
+  width: 300px;
+  height: 460px;
+      font-size: 0.7rem;
+}
+
+
+}
+@media screen and (max-width:695px) {
+  .product {
+  width: 250px;
+}
+}
+@media screen and (max-width:585px) {
+  .product {
+  width: 212px;
+}
+}

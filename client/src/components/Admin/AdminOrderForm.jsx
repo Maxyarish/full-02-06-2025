@@ -1,27 +1,30 @@
 import React from "react";
-import { Formik, Form, Field } from "formik"; 
+import { Formik, Form, Field } from "formik";
 import CONSTANTS from "../../constants";
 import { useDispatch } from "react-redux";
 import { updateOrderStatusThunk } from "../../store/orderSlice";
 
 const AdminOrderForm = (props) => {
   const { order } = props;
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const showStatus = (status) => (
     <option key={status} value={status}>
       {status}
     </option>
   );
-  const onSubmit=(value)=>{
-    dispatch(updateOrderStatusThunk({id:order._id, status:value.status}))
-  }
+  const onSubmit = (value) => {
+    dispatch(updateOrderStatusThunk({ id: order._id, status: value.status }));
+  };
   return (
     <Formik initialValues={{ status: order?.status }} onSubmit={onSubmit}>
       <Form>
         <Field as="select" name="status">
           {CONSTANTS.ORDER_STATUS.map(showStatus)}
         </Field>
-        <button type="submit">save</button>
+        <div>
+          {" "}
+          <button type="submit">save</button>
+        </div>
       </Form>
     </Formik>
   );

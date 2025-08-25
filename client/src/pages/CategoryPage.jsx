@@ -24,7 +24,7 @@ const CategoryPage = () => {
   }
   return (
     <div className={styles.category}>
-      <h1>{selectedCategory?.name}</h1>
+      <h1 >{selectedCategory?.name}</h1>
       {selectedCategory?.products?.length > 0 ? (
         <ProductList products={selectedCategory?.products} />
       ) : (

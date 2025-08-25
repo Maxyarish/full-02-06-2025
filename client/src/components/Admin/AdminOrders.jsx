@@ -4,7 +4,7 @@ import { getOrderForAdminThunk, getOrdersAmountThunk } from "../../store/orderSl
 import AdminOrderRow from "./AdminOrderRow";
 import Pagination from "../Pagination/Pagination";
 import CONSTANTS from "../../constants";
-
+import styles from "./Admin.module.scss"
 const AdminOrders = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
@@ -22,7 +22,7 @@ const AdminOrders = () => {
   );
 
   return (
-    <section>
+    <section className={styles['main-order-border']}>
       <h1>Admin Orders</h1>
       <div>
         <h2>Total Orders: {totalOrders}</h2>
